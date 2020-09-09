@@ -21,8 +21,8 @@ class SeriesController extends Controller
 
     public function store(Request $request)
     {
-        $nome = $request->nome;
         $serie = Serie::create($request->all());
+        
         return redirect('/series');
     }
 }
