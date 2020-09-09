@@ -27,4 +27,13 @@ class SeriesFormRequest extends FormRequest
             'nome' => 'required|min:3'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'required' => 'O campo :attribute eh obrigatorio',
+            // 'nome.required' => 'O campo nome eh obrigatorio',
+            'nome.min' => 'O campo nome precisa ter pelo menos 2 caracteres',
+        ];
+    }
 }
