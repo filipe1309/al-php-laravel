@@ -17,7 +17,7 @@ class Autenticador
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check()) {
+        if (!$request->is('entrar', 'registrar') && !Auth::check()) {
             return redirect('/entrar');
         }
 
