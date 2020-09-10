@@ -9,11 +9,10 @@ class CriadorDeSerie
 {
     public function criarSerie(string $nomeSerie, int $qtdTemporadas, int $epPorTemporada): Serie
     {
-        $serie = null;
-        DB::transaction(function () use ($nomeSerie, $qtdTemporadas, $epPorTemporada, &$serie) {
-            $serie = Serie::create(['nome' => $nomeSerie]);
-            $this->criarTemporadas($serie, $qtdTemporadas, $epPorTemporada);
-        });
+        DB::beginTransaction();
+        $serie = Serie::create(['nome' => $nomeSerie]);
+        $this->criarTemporadas($serie, $qtdTemporadas, $epPorTemporada);
+        DB::commit();
 
         return $serie;
     }
