@@ -10,11 +10,11 @@ use App\Http\Requests\SeriesFormRequest;
 
 class SeriesController extends Controller
 {
-    public function __construct()
+    /*public function __construct()
     {
         // Bloqueia todas as rotas (metodos) deste controller
         $this->middleware('auth');
-    }
+    }*/
 
     public function index(Request $request)
     {
