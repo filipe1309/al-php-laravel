@@ -5,11 +5,7 @@
 @endsection
 
 @section('conteudo')
-    @if(!empty($mensagem))
-        <div class="alert alert-success">
-            {{ $mensagem }}
-        </div>
-    @endif
+    @include('mensagem', compact('mensagem'))
 
     <br>
     
