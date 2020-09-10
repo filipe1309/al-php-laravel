@@ -11,7 +11,14 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 d-flex justify-content-between">
         <a class="navbar navbar-expand-lg" href="{{ route('listar_series') }}">Home</a>
-        <a href="/sair" class="text-danger">Sair</a>
+        @auth
+            <a href="/sair" class="text-danger">Sair</a>
+        @endauth
+
+        @guest
+            <a href="/entrar">Entrar</a>
+        @endguest
+
     </nav>
 
     <div class="container">
