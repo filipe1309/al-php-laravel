@@ -31,3 +31,8 @@ Route::post('/entrar', 'App\Http\Controllers\EntrarController@entrar');
 
 Route::get('/registrar', 'App\Http\Controllers\RegistroController@create');
 Route::post('/registrar', 'App\Http\Controllers\RegistroController@store');
+
+Route::get('/sair', function() {
+    \Illuminate\Support\Facades\Auth::logout();
+    return redirect('/entrar');
+});
