@@ -5,12 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Serie;
 use App\Services\{ CriadorDeSerie, RemovedorDeSerie };
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SeriesFormRequest;
 
 class SeriesController extends Controller
 {
+    public function __construct()
+    {
+        // Bloqueia todas as rotas (metodos) deste controller
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
+        // Bloqueia somente esta rota
+        /*if (!Auth::check()) {
+            echo "Nao autorizado!!";
+        }*/
+
         $series = Serie::query()->orderBy('nome')->get();
         
         $mensagem = $request->session()->get('mensagem');
