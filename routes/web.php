@@ -28,3 +28,6 @@ Route::post('/temporadas/{temporada}/episodios/assistir', 'App\Http\Controllers\
 
 Route::get('/entrar', 'App\Http\Controllers\EntrarController@index');
 Route::post('/entrar', 'App\Http\Controllers\EntrarController@entrar');
+
+Route::get('/registrar', 'App\Http\Controllers\RegistroController@create');
+Route::post('/registrar', 'App\Http\Controllers\RegistroController@store');

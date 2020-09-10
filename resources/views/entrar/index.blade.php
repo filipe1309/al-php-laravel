@@ -20,6 +20,6 @@
         </div>
 
         <button class="btn btn-primary mt-3">Entrar</button>
-        <a href="#" class="btn btn-secondary mt-3">Registrar-se</a>
+        <a href="/registrar" class="btn btn-secondary mt-3">Registrar-se</a>
     </form>
 @endsection
