@@ -1,20 +1,17 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-// use PHPUnit\Framework\TestCase;
 use App\Models\{ Temporada, Episodio };
 
-class TemporadaTest extends TestCase
+class BuscaPorEpisodiosTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testBuscaPorEpisodiosAssistidos()
+    public function setUp(): void
     {
+        parent::setUp();
         $temporada = new Temporada();
         $episodio1 = new Episodio();
         $episodio1->assistido = true;
@@ -26,11 +23,24 @@ class TemporadaTest extends TestCase
         $temporada->episodios->add($episodio2);
         $temporada->episodios->add($episodio3);
         
-        $episodiosAssistidos = $temporada->getEpisodiosAssistidos();
+        $this->temporada = $temporada;
+    }
+
+    public function testBuscaPorEpisodiosAssistidos()
+    {
+        
+        $episodiosAssistidos = $this->temporada->getEpisodiosAssistidos();
 
         $this->assertCount(2, $episodiosAssistidos);
         foreach ($episodiosAssistidos as $episodio) {
             $this->assertTrue($episodio->assistido);
         }
+    }
+
+    public function testBuscaTodosOsEpisodios()
+    {
+        $episodios = $this->temporada->episodios;
+
+        $this->assertCount(3, $episodios);
     }
 }
